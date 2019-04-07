@@ -1,4 +1,3 @@
-from Maestro import Controller
 # from tkinter import *
 import time
 import os
@@ -62,18 +61,20 @@ def receive(s_2):
     while True:
         r = s_2.recv(1024)
         msg = r.decode('ascii')
-        print('Received: ' + msg)
+        # print('Received: ' + msg)
         if(msg == "forward"):
+            # print("forward recieved")
             forward()
         elif(msg == "back"):
             back()
         elif (msg == "left"):
-            back()
+            left()
         elif (msg == "right"):
-            back()
+            right()
         elif (msg == "stop"):
             stopFast()
         elif (msg == "speed1"):
+            # print("speed set to 1")
             setSpeed(1)
         elif (msg == "speed2"):
             setSpeed(2)
@@ -150,15 +151,16 @@ def stopFast():
 def setSpeed(char):
     global forwardSpeed
     global backSpeed
-    if (char == '1'):
+    # print("called setSpeed")
+    if (char == 1):
         forwardSpeed = 6300
         backSpeed = 5700
         print("speed set to low")
-    if (char == '2'):
+    if (char == 2):
         forwardSpeed = 6400
         backSpeed = 5600
         print("speed set to med")
-    if (char == '3'):
+    if (char == 3):
         forwardSpeed = 7000
         backSpeed = 5000
         print("speed set to high")

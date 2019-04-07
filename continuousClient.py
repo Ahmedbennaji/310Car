@@ -20,48 +20,48 @@ port = 9999
 s.connect((connectMSU, port))
 
 
-def back():
+def back(event):
     msg = "back"
     s.send(msg.encode('ascii'))
 
 
-def forward():
+def forward(event):
     msg = "forward"
     s.send(msg.encode('ascii'))
 
 
-def right():
+def right(event):
     msg = "right"
     s.send(msg.encode('ascii'))
 
 
-def left():
+def left(event):
     msg = "left"
     s.send(msg.encode('ascii'))
 
 
-def stop():
+def stop(event):
     msg = "stop"
     s.send(msg.encode('ascii'))
 
 
-def stopFast():
+def stopFast(event):
     msg = "stopFast"
     s.send(msg.encode('ascii'))
 
 
 def setSpeed(event):
     if (event.char == '1'):
-        msg = "setSpeed1"
+        msg = "speed1"
         s.send(msg.encode('ascii'))
     if (event.char == '2'):
-        msg = "setSpeed2"
+        msg = "speed2"
         s.send(msg.encode('ascii'))
     if (event.char == '3'):
-        msg = "setSpeed3"
+        msg = "speed3"
         s.send(msg.encode('ascii'))
 
-def disconnect():
+def disconnect(event):
     s.close()
 
 
@@ -87,7 +87,7 @@ root.bind('3', setSpeed)
 
 root.bind('<BackSpace>', stopFast)
 
-root.bind('<Esc>', disconnect)
+root.bind('<Escape>', disconnect)
 
 
 # call tkinter mainloop() to start process
